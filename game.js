@@ -43,7 +43,7 @@ function game() {
       playerBet = window.prompt("Choose one: ROCK, PAPER, or SCISSORS");
     }
 
-    if (!options.includes(playerBet.toLowerCase())) {
+    while (!options.includes(playerBet.toLowerCase())) {
       playerBet = window.prompt(
         `${playerBet} is not valid. Try again. ROCK, PAPER or SCISSORS?`,
       );
@@ -52,6 +52,7 @@ function game() {
     computerBet = computerPlay();
     const result = playRound(playerBet, computerBet);
 
+    console.log(`------ROUND ${round + 1}------`);
     console.log(`You chose: ${playerBet}. Evil AI chose: ${computerBet}`);
 
     switch (result) {
