@@ -8,8 +8,6 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
   const lowPlayerSelection = playerSelection.toLowerCase();
 
-  console.log(lowPlayerSelection, computerSelection);
-
   if (
     (lowPlayerSelection === "rock" && computerSelection === "rock") ||
     (lowPlayerSelection === "paper" && computerSelection === "paper") ||
@@ -34,8 +32,16 @@ function game() {
   let playerBet;
   let computerBet;
 
+  const options = ["rock", "paper", "scissors"];
+
   for (let round = 0; round < 5; round++) {
     playerBet = window.prompt("Choose one: ROCK, PAPER, or SCISSORS");
+    if (!options.includes(playerBet.toLowerCase())) {
+      playerBet = window.prompt(
+        `${playerBet} is not valid. Try again. ROCK, PAPER or SCISSORS?`,
+      );
+    }
+
     computerBet = computerPlay();
     const result = playRound(playerBet, computerBet);
 
