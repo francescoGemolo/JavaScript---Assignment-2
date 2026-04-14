@@ -15,18 +15,63 @@ function playRound(playerSelection, computerSelection) {
     (lowPlayerSelection === "paper" && computerSelection === "paper") ||
     (lowPlayerSelection === "scissors" && computerSelection === "scissors")
   ) {
-    return "It's a draw!";
+    return 1;
   } else if (
     (lowPlayerSelection === "rock" && computerSelection == "paper") ||
     (lowPlayerSelection === "paper" && computerSelection == "scissors") ||
     (lowPlayerSelection === "scissors" && computerSelection == "rock")
   ) {
-    return `You lose, ${computerSelection} beats ${lowPlayerSelection}!`;
+    return 2;
   } else {
-    return `You win, ${lowPlayerSelection} beats ${computerSelection}!`;
+    return 3;
   }
 }
 
-const playerSelection = "PapEr";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+
+  let playerBet;
+  let computerBet;
+
+  for (let round = 0; round < 5; round++) {
+    playerBet = window.prompt("Choose one: ROCK, PAPER, or SCISSORS");
+    computerBet = computerPlay();
+    const result = playRound(playerBet, computerBet);
+
+    switch (result) {
+      case 1:
+        console.log("This round ended in a draw :|");
+        console.log(
+          `Your score: ${playerScore} - Computer score: ${computerScore}`,
+        );
+        break;
+
+      case 2:
+        computerScore++;
+        console.log(`You lose this round, ${computerBet} beats ${playerBet}!`);
+        console.log(
+          `Your score: ${playerScore} - Computer score: ${computerScore}`,
+        );
+        break;
+
+      case 3:
+        playerScore++;
+        console.log(`You win this round, ${playerBet} beats ${computerBet}!`);
+        console.log(
+          `Your score: ${playerScore} - Computer score: ${computerScore}`,
+        );
+        break;
+    }
+  }
+
+  if (playerScore < computerScore) {
+    console.log("Oh, no. You lost to a machine! Well, maybe next time...");
+  } else if (playerScore > computerScore) {
+    console.log("Congratulations! You are the WINNER!!");
+  } else {
+    console.log("It ended in a draw. It was unlikely, but not impossible.");
+  }
+}
+
+game();
