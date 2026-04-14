@@ -35,7 +35,14 @@ function game() {
   const options = ["rock", "paper", "scissors"];
 
   for (let round = 0; round < 5; round++) {
-    playerBet = window.prompt("Choose one: ROCK, PAPER, or SCISSORS");
+    if (round === 0) {
+      playerBet = window.prompt(
+        "I am the Evil AI, and I challenge you to Rock, Paper, Scissors! Can you beat me in 5 rounds? Remember: Rock beats Scissors, Scissors beats Paper, Paper beats Rock. Type your choice and let's see what you've got... if you dare.",
+      );
+    } else {
+      playerBet = window.prompt("Choose one: ROCK, PAPER, or SCISSORS");
+    }
+
     if (!options.includes(playerBet.toLowerCase())) {
       playerBet = window.prompt(
         `${playerBet} is not valid. Try again. ROCK, PAPER or SCISSORS?`,
@@ -44,6 +51,8 @@ function game() {
 
     computerBet = computerPlay();
     const result = playRound(playerBet, computerBet);
+
+    console.log(`You chose: ${playerBet}. Evil AI chose: ${computerBet}`);
 
     switch (result) {
       case 1:
