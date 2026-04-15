@@ -36,6 +36,11 @@ function game() {
 
   const quitMessage =
     "Are you giving up? I thought you’d be a worthy opponent...";
+  const looseMessage =
+    "Oh, no. You lost to a machine! Well, maybe next time...";
+  const winMessage = "Congratulations! You are the WINNER!!";
+  const drawMessage =
+    "It ended in a draw. It was unlikely, but not impossible.";
 
   for (let round = 0; round < 5; round++) {
     if (round === 0) {
@@ -93,11 +98,14 @@ function game() {
   }
 
   if (playerScore < computerScore) {
-    console.log("Oh, no. You lost to a machine! Well, maybe next time...");
+    console.log(looseMessage);
+    alert(looseMessage);
   } else if (playerScore > computerScore) {
-    console.log("Congratulations! You are the WINNER!!");
+    console.log(winMessage);
+    alert(winMessage);
   } else {
-    console.log("It ended in a draw. It was unlikely, but not impossible.");
+    console.log(drawMessage);
+    alert(drawMessage);
   }
 }
 
