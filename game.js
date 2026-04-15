@@ -42,10 +42,21 @@ function game() {
     }
     playerBet = window.prompt("Choose one: ROCK, PAPER, or SCISSORS");
 
+    if (playerBet === null) {
+      console.log("Are you giving up? I thought you’d be a worthy opponent...");
+      return;
+    }
+
     while (!options.includes(playerBet.toLowerCase())) {
       playerBet = window.prompt(
         `${playerBet} is not valid. Try again. ROCK, PAPER or SCISSORS?`,
       );
+      if (playerBet === null) {
+        console.log(
+          "Are you giving up? I thought you’d be a worthy opponent...",
+        );
+        return;
+      }
     }
 
     computerBet = computerPlay();
@@ -93,5 +104,5 @@ function game() {
 console.log(
   "No long no see, human. Type %cgame()%c and press Enter to start...",
   "color: green;",
-  "color: inherit;"
+  "color: inherit;",
 );
