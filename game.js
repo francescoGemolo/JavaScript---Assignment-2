@@ -50,7 +50,7 @@ function game() {
     while (!options.includes(playerBet.toLowerCase())) {
       playerBet = window.prompt(`"${playerBet}" is not valid. Try again! Rock, Paper or Scissors?`);
       if (playerBet === null) {
-        console.log(quitMessage);
+        console.log("%c" + quitMessage, "color: orange;");
         return;
       }
     }
