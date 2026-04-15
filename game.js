@@ -34,6 +34,9 @@ function game() {
 
   const options = ["rock", "paper", "scissors"];
 
+  const quitMessage =
+    "Are you giving up? I thought you’d be a worthy opponent...";
+
   for (let round = 0; round < 5; round++) {
     if (round === 0) {
       message = window.alert(
@@ -43,7 +46,7 @@ function game() {
     playerBet = window.prompt("Choose one: ROCK, PAPER, or SCISSORS");
 
     if (playerBet === null) {
-      console.log("Are you giving up? I thought you’d be a worthy opponent...");
+      console.log(quitMessage);
       return;
     }
 
@@ -52,9 +55,7 @@ function game() {
         `${playerBet} is not valid. Try again. ROCK, PAPER or SCISSORS?`,
       );
       if (playerBet === null) {
-        console.log(
-          "Are you giving up? I thought you’d be a worthy opponent...",
-        );
+        console.log(quitMessage);
         return;
       }
     }
