@@ -90,4 +90,9 @@ function game() {
   }
 }
 
-game();
+// Prompt
+console.log(
+  "No long no see, human. Type %cgame()%c and press Enter to start...",
+  "color: green;",
+  "color: inherit;"
+);
