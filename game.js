@@ -69,17 +69,25 @@ function game() {
     console.log(`Round ${round}`);
     console.log(`You chose: ${playerBet} | AI chose: ${computerBet}`);
     console.log(resultMessage);
-    console.log(`Score: Player ${playerScore} - AI ${computerScore}`);
+    console.log(`Score: Player: ${playerScore} - AI: ${computerScore}`);
   }
 
-  // Score Messages
-  const finalResult = playerScore > computerScore
-    ? "Congratulations! You are the Winner and you saved the world!"
-    : playerScore < computerScore
-      ? "Oh no! The Evil AI has dominated the world. You lost!"
-      : "It's a draw! The world is safe...for now.";
+  // Score Messages (With Colors)
+  let finalResult;
+  let finalColor;
 
-  console.log("%c" + finalResult, "color: lime;");
+  if (playerScore > computerScore) {
+    finalResult = "Congratulations! You are the Winner and you saved the world!";
+    finalColor = "color: lime;";
+  } else if (playerScore < computerScore) {
+    finalResult = "Oh no! The Evil AI has dominated the world. You lost!";
+    finalColor = "color: red;";
+  } else {
+    finalResult = "It's a draw! The world is safe...for now.";
+    finalColor = "color: yellow;";
+  }
+
+  console.log("%c" + finalResult, finalColor);
   alert(finalResult);
 }
 
