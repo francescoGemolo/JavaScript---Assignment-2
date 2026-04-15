@@ -56,11 +56,36 @@ function game() {
     }
   }
 
+  const computerBet = computerPlay();
+  const resultMessage = playRound(playerBet, computerBet);
+
+  // Score Logic
+  if (resultMessage.includes("Win")) {
+    playerScore++;
+  } else if (resultMessage.includes("Lose")) {
+    computerScore++;
+  }
+
+  // Score Messages
+  const finalResult = playerScore > computerScore
+    ? "Congratulations! You are the Winner and you saved the world!"
+    : playerScore < computerScore
+      ? "Oh no! The Evil AI has dominated the world. You lost!"
+      : "It's a draw! The world is safe...for now.";
+
+  console.log("c" + finalResult, "color: red;");
+  alert(finalResult);
+
+  // Output
+  console.log(`Round ${round}`);
+  console.log(`You chose: ${playerBet} | AI chose: ${computerBet}`);
+  console.log(resultMessage);
+  console.log(`Score: Player ${playerScore} - AI ${computerScore}`);
 }
 
 // Prompt
 console.log(
-  "No long no see, human. Type %cgame()%c and press Enter to start...",
-  "color: green;",
-  "color: inherit;",
+  "The Evil AI is waiting... Type %cgame()%c and press Enter to start the battle!",
+  "color: green; font-weight: bold;",
+  "color: inherit;"
 );
