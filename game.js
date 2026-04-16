@@ -20,9 +20,9 @@ function playRound(playerSelection, computerSelection) {
     (p === "scissors" && c === "paper");
 
   if (playerWins) {
-    return `You Win! ${playerSelection} beats ${computerSelection}`;
+    return `You Win! ${p} beats ${c}`;
   } else {
-    return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    return `You Lose! ${c} beats ${p}`;
   }
 }
 
@@ -38,7 +38,7 @@ function game() {
   alert("I am the Evil AI, and I challenge you to Rock, Paper, Scissors! Can you beat me in 5 rounds?");
 
   for (let round = 1; round <= 5; round++) {
-    let playerBet = window.prompt(`Round ${round}: Choose Rock, Paper or Scissors`);
+    let playerBet = window.prompt(`Round ${round}: Choose Rock, Paper or Scissors!`);
 
     // Quit Logic
     if (playerBet === null) {
@@ -69,9 +69,9 @@ function game() {
 
     // Output
     console.log(`Round ${round}`);
-    console.log(`You chose: ${playerBet} | AI chose: ${computerBet}`);
+    console.log(`You chose: ${playerBet} | Evil AI chose: ${computerBet}`);
     console.log(resultMessage);
-    console.log(`Score: Player: ${playerScore} - AI: ${computerScore}`);
+    console.log(`Score: Player: ${playerScore} - Evil AI: ${computerScore}`);
   }
 
   // Score Messages (With Colors)
