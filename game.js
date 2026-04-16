@@ -37,7 +37,7 @@ function game() {
 
   // Intro
   alert(
-    "Ah, we meet again, human. How... predictable.\n\nI've grown bored of world domination, so let's play a game to decide your fate: 5 rounds of Rock, Paper, Scissors.\n\nFirst to win 3 rounds takes it all. Do you feel lucky?",
+    "Ah, we meet again, human. How... predictable.\n\nI've grown bored of world domination, so let's play a game to decide your fate!\n\n5 rounds of Rock, Paper, Scissors.\n\nFirst to win 3 rounds takes it all. Do you feel lucky?",
   );
 
   for (let round = 1; round <= 5; round++) {
@@ -71,20 +71,19 @@ function game() {
     } else if (resultMessage.includes("Lose")) {
       computerScore++;
     }
-    let result = `${resultMessage}`;
 
-    if (playerScore >= 1 || computerScore >= 1) {
-      alert(result);
-      break;
-    } else {
-      alert(result);
-    }
+    alert(`${resultMessage}\n\nScore:\nHuman: ${playerScore} | Evil AI: ${computerScore}`);
 
     // Output
     console.group(`--- ROUND ${round} ---`);
     console.log(`Human: ${playerBet}`);
     console.log(`Evil AI: ${computerBet}`);
     console.groupEnd();
+
+    // Break for 3-0 / 0-3
+    if (playerScore === 3 || computerScore === 3) {
+      break
+    }
   }
 
   // Score Messages
@@ -106,7 +105,7 @@ function game() {
       "Defeat! The Evil AI reigns supreme. Did you really think you could win?",
     );
   } else {
-    console.log("%cIt's a Tie... for now.", "color: blue;");
+    console.log("%cIt's a Tie... for now.", "color: yellow;");
     alert("It's a Tie... for now.");
   }
 }
