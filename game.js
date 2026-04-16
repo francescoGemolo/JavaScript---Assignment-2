@@ -32,13 +32,18 @@ function game() {
   let computerScore = 0;
 
   // Quit
-  const quitMessage = "Are you giving up? I thought you’d be a worthy opponent...";
+  const quitMessage =
+    "Are you giving up? I thought you’d be a worthy opponent...";
 
   // Intro
-  alert("Ah, we meet again, human. How... predictable. \n\nI've grown bored of world domination, so let's play a game to decide your fate: \n5 rounds of Rock, Paper, Scissors.\n\nDo you feel lucky?");
+  alert(
+    "Ah, we meet again, human. How... predictable. \n\nI've grown bored of world domination, so let's play a game to decide your fate: \n5 rounds of Rock, Paper, Scissors.\n\nDo you feel lucky?",
+  );
 
   for (let round = 1; round <= 5; round++) {
-    let playerBet = window.prompt(`Round ${round}: Choose Rock, Paper or Scissors!`);
+    let playerBet = window.prompt(
+      `Round ${round}: Choose Rock, Paper or Scissors!`,
+    );
 
     // Quit Logic
     if (playerBet === null) {
@@ -48,7 +53,9 @@ function game() {
 
     // Input Validation
     while (!options.includes(playerBet.toLowerCase())) {
-      playerBet = window.prompt(`"${playerBet}" is not valid. Try again! Rock, Paper or Scissors?`);
+      playerBet = window.prompt(
+        `"${playerBet}" is not valid. Try again! Rock, Paper or Scissors?`,
+      );
       if (playerBet === null) {
         console.log("%c" + quitMessage, "color: orange;");
         return;
@@ -64,8 +71,14 @@ function game() {
     } else if (resultMessage.includes("Lose")) {
       computerScore++;
     }
-    let result = `${resultMessage}`
-    alert(result)
+    let result = `${resultMessage}`;
+
+    if (playerScore >= 3 || computerScore >= 3) {
+      alert(result);
+      return;
+    } else {
+      alert(result);
+    }
 
     // Output
     console.group(`--- ROUND ${round} ---`);
@@ -85,7 +98,7 @@ function game() {
     console.log("%cDefeat! The Evil AI dominates the Earth.", "color: red;");
     alert("Defeat! The Evil AI dominates the Earth.");
   } else {
-    console.log("%cIt's a Tie... for now.", "color: yellow;");
+    console.log("%cIt's a Tie... for now.", "color: blue;");
     alert("It's a Tie... for now.");
   }
 }
@@ -94,5 +107,5 @@ function game() {
 console.log(
   "The Evil AI is waiting. Type %cgame()%c and press Enter to start the battle!",
   "color: green;",
-  "color: inherit;"
+  "color: inherit;",
 );
