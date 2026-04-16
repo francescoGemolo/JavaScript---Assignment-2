@@ -73,9 +73,9 @@ function game() {
     }
     let result = `${resultMessage}`;
 
-    if (playerScore >= 3 || computerScore >= 3) {
+    if (playerScore >= 1 || computerScore >= 1) {
       alert(result);
-      return;
+      break;
     } else {
       alert(result);
     }
