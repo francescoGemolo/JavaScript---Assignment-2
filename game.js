@@ -11,7 +11,7 @@ function playRound(playerSelection, computerSelection) {
   const p = playerSelection.toLowerCase();
   const c = computerSelection.toLowerCase();
 
-  if (p === c) return "Tie";
+  if (p === c) return "It's a Tie. How boring. Try harder.";
 
   // Win Condition
   const playerWins =
@@ -20,9 +20,9 @@ function playRound(playerSelection, computerSelection) {
     (p === "scissors" && c === "paper");
 
   if (playerWins) {
-    return `You Win! ${p} beats ${c}`;
+    return `You Win this round! ${p} beats ${c}. Don't get cocky...`;
   } else {
-    return `You Lose! ${c} beats ${p}`;
+    return `You Lose this round! ${c} beats ${p}. As expected.`;
   }
 }
 
@@ -37,7 +37,7 @@ function game() {
 
   // Intro
   alert(
-    "Ah, we meet again, human. How... predictable. \n\nI've grown bored of world domination, so let's play a game to decide your fate: \n5 rounds of Rock, Paper, Scissors.\n\nDo you feel lucky?",
+    "Ah, we meet again, human. How... predictable.\n\nI've grown bored of world domination, so let's play a game to decide your fate: 5 rounds of Rock, Paper, Scissors.\n\nFirst to win 3 rounds takes it all. Do you feel lucky?",
   );
 
   for (let round = 1; round <= 5; round++) {
@@ -92,11 +92,19 @@ function game() {
   console.log(`Human: ${playerScore} | Evil AI: ${computerScore}`);
 
   if (playerScore > computerScore) {
-    console.log("%cVictory! You have saved the world!", "color: lime;");
-    alert("Victory! You have saved the world!");
+    console.log(
+      "%cVictory! You have defeated the Evil AI... this time. I'll be back.",
+      "color: lime;",
+    );
+    alert("Victory! You have defeated the Evil AI... this time. I'll be back.");
   } else if (playerScore < computerScore) {
-    console.log("%cDefeat! The Evil AI dominates the Earth.", "color: red;");
-    alert("Defeat! The Evil AI dominates the Earth.");
+    console.log(
+      "%cDefeat! The Evil AI reigns supreme. Did you really think you could win?",
+      "color: red;",
+    );
+    alert(
+      "Defeat! The Evil AI reigns supreme. Did you really think you could win?",
+    );
   } else {
     console.log("%cIt's a Tie... for now.", "color: blue;");
     alert("It's a Tie... for now.");
