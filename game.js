@@ -64,6 +64,8 @@ function game() {
     } else if (resultMessage.includes("Lose")) {
       computerScore++;
     }
+    let result = `${resultMessage}`
+    alert(result)
 
     // Output
     console.log(`Round ${round}`);
