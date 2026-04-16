@@ -35,7 +35,7 @@ function game() {
   const quitMessage = "Are you giving up? I thought you’d be a worthy opponent...";
 
   // Intro
-  alert("I am the Evil AI, and I challenge you to Rock, Paper, Scissors! Can you beat me in 5 rounds?");
+  alert("Ah, we meet again, human. How... predictable. \n\nI've grown bored of world domination, so let's play a game to decide your fate: \n5 rounds of Rock, Paper, Scissors.\n\nDo you feel lucky?");
 
   for (let round = 1; round <= 5; round++) {
     let playerBet = window.prompt(`Round ${round}: Choose Rock, Paper or Scissors!`);
