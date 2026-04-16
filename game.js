@@ -68,32 +68,29 @@ function game() {
     alert(result)
 
     // Output
-    console.log(`Round ${round}`);
-    console.log(`You chose: ${playerBet} | Evil AI chose: ${computerBet}`);
-    console.log(resultMessage);
-    console.log(`Score: Player: ${playerScore} - Evil AI: ${computerScore}`);
+    console.group(`--- ROUND ${round} ---`);
+    console.log(`Human: ${playerBet}`);
+    console.log(`Evil AI: ${computerBet}`);
+    console.groupEnd();
   }
 
-  // Score Messages (With Colors)
-  let finalResult;
-  let finalColor;
+  // Score Messages
+  console.log("\n%cFINAL SCORE", "color: orange;");
+  console.log(`Human: ${playerScore} | Evil AI: ${computerScore}`);
 
   if (playerScore > computerScore) {
-    finalResult = "Congratulations! You are the Winner and you saved the world!";
-    finalColor = "color: lime;";
+    console.log("%cVictory! You have saved the world!", "color: lime;");
+    alert("Victory! You have saved the world!");
   } else if (playerScore < computerScore) {
-    finalResult = "Oh no! The Evil AI has dominated the world. You lost!";
-    finalColor = "color: red;";
+    console.log("%cDefeat! The Evil AI dominates the Earth.", "color: red;");
+    alert("Defeat! The Evil AI dominates the Earth.");
   } else {
-    finalResult = "It's a draw! The world is safe...for now.";
-    finalColor = "color: yellow;";
+    console.log("%cIt's a Tie... for now.", "color: yellow;");
+    alert("It's a Tie... for now.");
   }
-
-  console.log("%c" + finalResult, finalColor);
-  alert(finalResult);
 }
 
-// Prompt
+// Input
 console.log(
   "The Evil AI is waiting. Type %cgame()%c and press Enter to start the battle!",
   "color: green;",
