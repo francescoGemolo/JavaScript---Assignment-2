@@ -1,6 +1,12 @@
 // Global const
 const options = ["rock", "paper", "scissors"];
 
+// Capitalize the first letter of a string
+function capitalize(str) {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function computerPlay() {
   const random = Math.floor(Math.random() * options.length);
   return options[random];
@@ -20,9 +26,9 @@ function playRound(playerSelection, computerSelection) {
     (p === "scissors" && c === "paper");
 
   if (playerWins) {
-    return `You Win this round! ${p} beats ${c}. Don't get cocky...`;
+    return `You Win this round! ${capitalize(p)} beats ${capitalize(c)}. Don't get cocky...`;
   } else {
-    return `You Lose this round! ${c} beats ${p}. As expected.`;
+    return `You Lose this round! ${capitalize(c)} beats ${capitalize(p)}. As expected.`;
   }
 }
 
@@ -76,8 +82,8 @@ function game() {
 
     // Output
     console.group(`--- ROUND ${round} ---`);
-    console.log(`Human: ${playerBet}`);
-    console.log(`Evil AI: ${computerBet}`);
+    console.log(`Human: ${capitalize(playerBet)}`);
+    console.log(`Evil AI: ${capitalize(computerBet)}`);
     console.groupEnd();
 
     // Break for 3-0 / 0-3
