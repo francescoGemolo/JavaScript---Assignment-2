@@ -15,7 +15,7 @@ function computerPlay() {
 // Game Logic
 function playRound(playerSelection, computerSelection) {
   const p = playerSelection.toLowerCase();
-  const c = computerSelection.toLowerCase();
+  const c = computerSelection;
 
   if (p === c) return "It's a Tie. How boring. Try harder.";
 
