@@ -52,6 +52,8 @@ function game() {
       return;
     }
 
+    playerBet = playerBet.trim();
+
     // Input Validation
     while (!options.includes(playerBet.toLowerCase())) {
       playerBet = window.prompt(
@@ -61,6 +63,7 @@ function game() {
         console.log("%c" + quitMessage, "color: orange;");
         return;
       }
+      playerBet = playerBet.trim();
     }
 
     const computerBet = computerPlay();
@@ -110,7 +113,7 @@ function game() {
 }
 
 function init() {
-  alert("Access denied. Open the console (Ctrl + Shift + I) to view the instructions and prove your worth!");
+  alert("Access denied. Open the console to view the instructions and prove your worth!\n\nWindows/Linux: Ctrl + Shift + I\nMac: Cmd + Option + I\nMobile: open this page in desktop mode or use a PC/Mac for the console.");
 
   console.clear();
   console.log(
