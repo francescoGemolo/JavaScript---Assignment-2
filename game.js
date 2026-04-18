@@ -11,7 +11,6 @@ function computerPlay() {
   return options[random];
 }
 
-// Game Logic
 function playRound(playerSelection, computerSelection) {
   const p = playerSelection.toLowerCase();
   const c = computerSelection;
@@ -48,7 +47,6 @@ function game() {
       `Round ${round}: Choose Rock, Paper or Scissors!`,
     );
 
-    // Quit Logic
     if (playerBet === null) {
       console.log("%c" + quitMessage, "color: orange;");
       return;
