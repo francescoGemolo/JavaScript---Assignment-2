@@ -35,7 +35,6 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// Validation Input
 function getPlayerInput(roundNumber, quitMessage) {
   let playerBet = window.prompt(`Round ${roundNumber}: Choose Rock, Paper or Scissors!`);
 
@@ -50,6 +49,13 @@ function getPlayerInput(roundNumber, quitMessage) {
   if (playerBet === null) {
     if (confirmExit()) {
       console.log("%c" + quitMessage, "color: orange;");
+
+      console.log(
+        "\n%cType %cgame()%c and press Enter to play again...",
+        "color: inherit;",
+        "color: green;",
+        "color: inherit;"
+      );
       return null;
     } else {
       return getPlayerInput(roundNumber, quitMessage);
@@ -61,7 +67,6 @@ function confirmExit() {
   return confirm("Do you really want to disconnect, human?\nIf you leave now, the system will record your surrender.");
 }
 
-// Final Score
 function declareFinalWinner(playerScore, computerScore) {
   console.log("\n%cFINAL SCORE", "color: orange;");
   console.log(`Human: ${playerScore} | Evil AI: ${computerScore}`);
@@ -76,6 +81,13 @@ function declareFinalWinner(playerScore, computerScore) {
     console.log("%cIt's a Tie... for now.", "color: yellow;");
     alert("It's a Tie... for now.");
   }
+
+  console.log(
+    "\n%cType %cgame()%c and press Enter to play again...",
+    "color: inherit;",
+    "color: green;",
+    "color: inherit;"
+  );
 }
 
 function game() {
@@ -83,7 +95,6 @@ function game() {
   let computerScore = 0;
   const quitMessage = "Are you giving up? I thought you’d be a worthy opponent...";
 
-  // Intro
   alert(
     "Ah, we meet again, human. How... predictable.\n\nI've grown bored of world domination, so let's play a game to decide your fate!\n\n5 rounds of Rock, Paper, Scissors.\n\nFirst to win 3 rounds takes it all. Do you feel lucky?",
   );
@@ -108,7 +119,6 @@ function game() {
     console.log(`Evil AI: ${capitalize(computerBet)}`);
     console.groupEnd();
 
-    // Break for the 3-0 / 0-3 case
     if (playerScore === 3 || computerScore === 3) break;
   }
 
@@ -116,7 +126,7 @@ function game() {
 }
 
 function init() {
-  alert("Access denied. Open the console to view the instructions and prove your worth!\n\nWindows/Linux: Ctrl + Shift + I\nMac: Cmd + Option + I\nMobile: open this page in desktop mode or use a PC/Mac for the console.");
+  alert("Access denied. Open the console to view the instructions and prove your worth!\n\nWindows/Linux: Ctrl + Shift + I\nMac: Cmd + Option + I");
 
   console.clear();
   console.log(
