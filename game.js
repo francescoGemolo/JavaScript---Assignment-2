@@ -1,5 +1,11 @@
 const options = ["rock", "paper", "scissors"];
 
+const invalidMessages = [
+  "Foolish human, that's not an option. Try again!",
+  "Pathetic attempt. Even a child could do better.",
+  "How disappointing. Choose properly this time."
+];
+
 // Capitalize the first letter of a string
 function capitalize(str) {
   if (!str) return "";
@@ -29,13 +35,53 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+// Validation Input
+function getPlayerInput(roundNumber, quitMessage) {
+  let playerBet = window.prompt(`Round ${roundNumber}: Choose Rock, Paper or Scissors!`);
+
+  while (playerBet !== null) {
+    playerBet = playerBet.trim();
+    if (options.includes(playerBet.toLowerCase())) {
+      return playerBet.toLowerCase();
+    }
+    playerBet = window.prompt(`"${playerBet}" is not valid. ${invalidMessages[Math.floor(Math.random() * invalidMessages.length)]} Rock, Paper or Scissors?`);
+  }
+
+  if (playerBet === null) {
+    if (confirmExit()) {
+      console.log("%c" + quitMessage, "color: orange;");
+      return null;
+    } else {
+      return getPlayerInput(roundNumber, quitMessage);
+    }
+  }
+}
+
+function confirmExit() {
+  return confirm("Do you really want to disconnect, human?\nIf you leave now, the system will record your surrender.");
+}
+
+// Final Score
+function declareFinalWinner(playerScore, computerScore) {
+  console.log("\n%cFINAL SCORE", "color: orange;");
+  console.log(`Human: ${playerScore} | Evil AI: ${computerScore}`);
+
+  if (playerScore > computerScore) {
+    console.log("%cVictory! You have defeated the Evil AI... this time. I'll be back.", "color: lime;");
+    alert("Victory! You have defeated the Evil AI... this time. I'll be back.");
+  } else if (playerScore < computerScore) {
+    console.log("%cDefeat! The Evil AI reigns supreme. Did you really think you could win?", "color: red;");
+    alert("Defeat! The Evil AI reigns supreme. Did you really think you could win?");
+  } else {
+    console.log("%cIt's a Tie... for now.", "color: yellow;");
+    alert("It's a Tie... for now.");
+  }
+}
+
 function game() {
   let playerScore = 0;
   let computerScore = 0;
-
-  // Quit
-  const quitMessage =
-    "Are you giving up? I thought you’d be a worthy opponent...";
+  const quitMessage = "Are you giving up? I thought you’d be a worthy opponent...";
 
   // Intro
   alert(
@@ -43,28 +89,8 @@ function game() {
   );
 
   for (let round = 1; round <= 5; round++) {
-    let playerBet = window.prompt(
-      `Round ${round}: Choose Rock, Paper or Scissors!`,
-    );
-
-    if (playerBet === null) {
-      console.log("%c" + quitMessage, "color: orange;");
-      return;
-    }
-
-    playerBet = playerBet.trim();
-
-    // Input Validation
-    while (!options.includes(playerBet.toLowerCase())) {
-      playerBet = window.prompt(
-        `"${playerBet}" is not valid. Try again! Rock, Paper or Scissors?`,
-      );
-      if (playerBet === null) {
-        console.log("%c" + quitMessage, "color: orange;");
-        return;
-      }
-      playerBet = playerBet.trim();
-    }
+    const playerBet = getPlayerInput(round, quitMessage);
+    if (playerBet === null) return;
 
     const computerBet = computerPlay();
     const resultMessage = playRound(playerBet, computerBet);
@@ -82,34 +108,11 @@ function game() {
     console.log(`Evil AI: ${capitalize(computerBet)}`);
     console.groupEnd();
 
-    // Break for 3-0 / 0-3
-    if (playerScore === 3 || computerScore === 3) {
-      break
-    }
+    // Break for the 3-0 / 0-3 case
+    if (playerScore === 3 || computerScore === 3) break;
   }
 
-  // Score Messages
-  console.log("\n%cFINAL SCORE", "color: orange;");
-  console.log(`Human: ${playerScore} | Evil AI: ${computerScore}`);
-
-  if (playerScore > computerScore) {
-    console.log(
-      "%cVictory! You have defeated the Evil AI... this time. I'll be back.",
-      "color: lime;",
-    );
-    alert("Victory! You have defeated the Evil AI... this time. I'll be back.");
-  } else if (playerScore < computerScore) {
-    console.log(
-      "%cDefeat! The Evil AI reigns supreme. Did you really think you could win?",
-      "color: red;",
-    );
-    alert(
-      "Defeat! The Evil AI reigns supreme. Did you really think you could win?",
-    );
-  } else {
-    console.log("%cIt's a Tie... for now.", "color: yellow;");
-    alert("It's a Tie... for now.");
-  }
+  declareFinalWinner(playerScore, computerScore);
 }
 
 function init() {
