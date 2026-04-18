@@ -116,9 +116,19 @@ function game() {
   }
 }
 
-// Input
-console.log(
-  "The Evil AI is waiting. Type %cgame()%c and press Enter to start the battle!",
-  "color: green;",
-  "color: inherit;",
-);
+// Init
+function init() {
+  alert("Access Denied: open the Console (Ctrl + Shift + I) to prove your worth.");
+
+  console.clear();
+  console.log(
+    "%cSECURITY BREACH ATTEMPT%c\n\nTo challenge the Evil AI, you must initialize the combat protocol.\n\nType %cgame()%c and press Enter to start the battle!",
+    "color: red;",
+    "color: inherit;",
+    "color: green;",
+    "color: inherit;"
+  );
+}
+
+// Prompt
+init();
