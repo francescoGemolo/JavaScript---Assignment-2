@@ -1,4 +1,3 @@
-// Global const
 const options = ["rock", "paper", "scissors"];
 
 // Capitalize the first letter of a string
@@ -19,7 +18,6 @@ function playRound(playerSelection, computerSelection) {
 
   if (p === c) return "It's a Tie. How boring. Try harder.";
 
-  // Win Condition
   const playerWins =
     (p === "rock" && c === "scissors") ||
     (p === "paper" && c === "rock") ||
@@ -32,7 +30,6 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// Main Code Logic
 function game() {
   let playerScore = 0;
   let computerScore = 0;
@@ -71,7 +68,6 @@ function game() {
     const computerBet = computerPlay();
     const resultMessage = playRound(playerBet, computerBet);
 
-    // Score Logic
     if (resultMessage.includes("Win")) {
       playerScore++;
     } else if (resultMessage.includes("Lose")) {
@@ -80,7 +76,6 @@ function game() {
 
     alert(`${resultMessage}\n\nScore:\nHuman: ${playerScore} | Evil AI: ${computerScore}`);
 
-    // Output
     console.group(`--- ROUND ${round} ---`);
     console.log(`Human: ${capitalize(playerBet)}`);
     console.log(`Evil AI: ${capitalize(computerBet)}`);
@@ -116,7 +111,6 @@ function game() {
   }
 }
 
-// Init
 function init() {
   alert("Access denied. Open the console (Ctrl + Shift + I) to view the instructions and prove your worth!");
 
@@ -130,5 +124,4 @@ function init() {
   );
 }
 
-// Prompt
 init();
